@@ -13,12 +13,10 @@ public class ProdutoDAO {
     private PreparedStatement operacaoListar;
 
     public ProdutoDAO() throws Exception {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String driverUrl = "jdbc:derby://localhost:1527/2017-3-dcc171";
-            Connection conexao = DriverManager.getConnection(driverUrl, "USUARIO", "SENHA");
-            operacaoInsere = conexao.prepareStatement("insert into produto (nome, qtd, atualizado) values"
+        conexao = ConexaoJavaDB.getConnection();
+        operacaoInsere = conexao.prepareStatement("insert into produto (nome, qtd, atualizado) values"
                     + "(?, ?, current_timestamp)");
-            operacaoListar = conexao.prepareStatement("select nome, qtd from produto where qtd > ?");
+        operacaoListar = conexao.prepareStatement("select nome, qtd from produto where qtd > ?");
     }
     
     public void criar(Produto prod) throws Exception
