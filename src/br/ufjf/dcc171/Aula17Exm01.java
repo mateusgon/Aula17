@@ -10,10 +10,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Aula17Exm01 {
-
+    
+    
+    
     public static void main(String[] args) {
         try {
-            ProdutoDAO dao = new ProdutoDAO();
+            ProdutoDAO dao = new ProdutoDAOJDBC();
             Random rnd = new Random();
             for (int i = 0; i < 10; i++)
             {
